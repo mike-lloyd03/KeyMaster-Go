@@ -19,11 +19,11 @@
 
             <!-- {% if current_user.is_authenticated %} -->
               <li class="nav-item">
-                <a class="nav-link" href="#">Home</a>
+                <a class="nav-link" href="/index">Home</a>
               </li>
 
               <li class="nav-item">
-                <a class="nav-link" href="#">Assign Key</a>
+                <a class="nav-link" href="assign_key">Assign Key</a>
               </li>
 
               <li class="nav-item dropdown">
@@ -31,19 +31,19 @@
                   Configuration
                 </a>
                 <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdownMenuLink">
-                  <li><a class="dropdown-item" href="#">Assignments</a></li>
+                  <li><a class="dropdown-item" href="/assignments">Assignments</a></li>
                   <li><a class="dropdown-item" href="/keys">Keys</a></li>
                   <li><a class="dropdown-item" href="/users">Users</a></li>
                 </ul>
               </li>
 
               <li class="nav-item">
-                <a class="nav-link" href="#">Logout</a>
+                <a class="nav-link" href="/logout">Logout</a>
               </li>
 
             <!-- {% else %} -->
               <li class="nav-item">
-                <a class="nav-link" href="#">Login</a>
+                <a class="nav-link" href="/login">Login</a>
               </li>
             <!-- {% endif %} -->
 			<div class="form-check form-switch ms-auto mt-3 me-3">

@@ -1,6 +1,8 @@
 package main
 
 import (
+	"keymaster_go/models"
+
 	"github.com/gin-gonic/gin"
 )
 
@@ -12,6 +14,7 @@ func main() {
 	router.LoadHTMLGlob("templates/*")
 	router.Static("/static", "./static")
 
+	models.DBConnect()
 	initializeRoutes()
 
 	router.Run("localhost:8080")
