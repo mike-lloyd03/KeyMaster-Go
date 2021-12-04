@@ -1,0 +1,98 @@
+{{ template "header.html" .}}
+
+<div class="container text-light my-3" style="max-width: 600px">
+  <div class="row justify-content-center">
+    <div class="">
+      <h1>Edit User</h1>
+
+      <form action="" method="post" class="form" role="form">
+        <input
+          id="csrf_token"
+          name="csrf_token"
+          type="hidden"
+          value="Ijc5YjY1ZTI0YjQwNjU3NjRmNDA1ZDBhMGFiY2Y4MGU3OGVhNjI3ODAi.YasWsw.n5c6dAaIFC7NujScijfFKtMDdWw"
+        />
+
+        <div class="form-group required">
+          <label class="control-label" for="username">Username</label>
+
+          <input
+            class="form-control"
+            id="username"
+            name="username"
+            required
+            type="text"
+            value="{{.Username}}"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="control-label" for="email">Email</label>
+
+          <input
+            class="form-control"
+            id="email"
+            name="email"
+            type="text"
+            value="{{.Email}}"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="control-label" for="display_name">Display Name</label>
+
+          <input
+            class="form-control"
+            id="display_name"
+            name="display_name"
+            type="text"
+            value="{{.DisplayName}}"
+          />
+        </div>
+
+        <div class="checkbox">
+          <label>
+            <input
+              id="can_login"
+              name="can_login"
+              type="checkbox"
+              {{if .CanLogin}}
+                value="y"
+              {{else}}
+                value="n"
+              {{end}}
+            />
+            Can Login?
+          </label>
+        </div>
+
+        <input
+          class="btn btn-primary"
+          id="submit"
+          name="submit"
+          type="submit"
+          value="Save Changes"
+        />
+
+        <input
+          class="btn btn-danger"
+          id="delete"
+          name="delete"
+          type="submit"
+          value="Delete User"
+        />
+
+        <input
+          class="btn btn-secondary"
+          formnovalidate
+          id="cancel"
+          name="cancel"
+          type="submit"
+          value="Cancel"
+        />
+      </form>
+    </div>
+  </div>
+</div>
+
+{{ template "footer.html" .}}

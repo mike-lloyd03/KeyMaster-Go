@@ -8,15 +8,13 @@ import (
 )
 
 type Key struct {
-	gorm.Model
-	Name        string
+	Name        string `gorm:"primaryKey"`
 	Description string
-	Status      string
+	Status      string `gorm:"default:Active"`
 }
 
 type User struct {
-	gorm.Model
-	ID           int
+	ID           int `gorm:"primaryKey"`
 	Username     string
 	Email        string
 	DisplayName  string
@@ -25,8 +23,7 @@ type User struct {
 }
 
 type Assignment struct {
-	gorm.Model
-	ID      int
+	ID      int `gorm:"primaryKey"`
 	User    string
 	Key     string
 	DateOut time.Time
@@ -42,6 +39,8 @@ func DBConnect() {
 	}
 
 	db.AutoMigrate(&Key{})
+	db.AutoMigrate(&User{})
+	db.AutoMigrate(&Assignment{})
 
 	// newWorkout := Workout{user: "Mike", name: "A", workout_start: time.Now()}
 	// db.Create(&newWorkout)
