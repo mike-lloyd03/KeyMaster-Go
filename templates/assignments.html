@@ -22,10 +22,10 @@
                     <tr>
                         <td>{{ .User }}</td>
                         <td>{{ .Key }}</td>
-                        <td>{{ .DateOut }}</td>
-                        <td>{{ .DateIn }}</td>
+                        <td>{{ .DateOut.Format "2006-01-02" }}</td>
+                        <td>{{if eq .DateIn.Year 1}}{{else}}{{.DateIn.Format "2006-01-02"}}{{end}}</td>
                         <td>
-                            <a class="btn btn-outline-primary" href="/edit_assignment/" role="button">Edit</a>
+                            <a class="btn btn-outline-primary" href="/edit_assignment?id={{.ID}}" role="button">Edit</a>
                         </td>
                     </tr>
                     {{ end }}

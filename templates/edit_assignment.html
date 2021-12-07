@@ -1,0 +1,108 @@
+{{ template "header.html" }}
+
+<div class="container text-light my-3" style="max-width: 600px">
+  <div class="row justify-content-center">
+    <div class="">
+      <h1>Edit Assignment</h1>
+
+      <form action="" method="post" class="form" role="form">
+        <input
+          id="csrf_token"
+          name="csrf_token"
+          type="hidden"
+          value="Ijc5YjY1ZTI0YjQwNjU3NjRmNDA1ZDBhMGFiY2Y4MGU3OGVhNjI3ODAi.YaxjBA.DJGwFp-8hO3h67SZISuspCX54dE"
+        />
+
+        <div class="form-group required">
+          <label class="control-label" for="user">User</label>
+
+          <select class="form-control" id="user" name="user" required>
+            {{$assignmentUser := .Assignment.User}}
+            {{range .Users}}
+              <option 
+                {{if eq .Username $assignmentUser}}
+                  selected
+                {{end}}
+              value="{{.Username}}">
+              {{if .DisplayName}}
+                {{.DisplayName}}
+              {{else}}
+                {{.Username}}
+              {{end}}
+              </option>
+            {{end}}
+          </select>
+        </div>
+
+        <div class="form-group required">
+          <label class="control-label" for="key">Key</label>
+
+          <select class="form-control" id="key" name="key" required>
+            {{$assignmentKey := .Assignment.Key}}
+            {{range .Keys}}
+              <option 
+                {{if eq .Name $assignmentKey}}
+                  selected
+                {{end}}
+                value="{{.Name}}">
+                  {{.Name}}
+              </option>
+            {{end}}
+          </select>
+        </div>
+
+        <div class="form-group required">
+          <label class="control-label" for="date_out">Date Out</label>
+
+          <input
+            class="form-control"
+            id="date_out"
+            name="date_out"
+            required
+            type="text"
+            value="{{.Assignment.DateOut.Format "2006-01-02"}}"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="control-label" for="date_in">Date In</label>
+
+          <input
+            class="form-control"
+            id="date_in"
+            name="date_in"
+            type="text"
+            value={{if eq .Assignment.DateIn.Year 1}}""{{else}}"{{.Assignment.DateIn.Format "2006-01-02"}}"{{end}}
+          />
+        </div>
+
+        <input
+          class="btn btn-primary"
+          id="submit"
+          name="submit"
+          type="submit"
+          value="Save Changes"
+        />
+
+        <input
+          class="btn btn-danger"
+          id="delete"
+          name="delete"
+          type="submit"
+          value="Delete Assignment"
+        />
+
+        <input
+          class="btn btn-secondary"
+          formnovalidate
+          id="cancel"
+          name="cancel"
+          type="submit"
+          value="Cancel"
+        />
+      </form>
+    </div>
+  </div>
+</div>
+
+{{ template "footer.html" }}

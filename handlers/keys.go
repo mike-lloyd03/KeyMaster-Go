@@ -44,7 +44,15 @@ func PostAddKey(c *gin.Context) {
 
 func GetEditKey(c *gin.Context) {
 	var key models.Key
-	models.DB.First(&key, "name = ?", c.Query("name"))
+	err := models.DB.First(&key, "name = ?", c.Query("name")).Error
+	if err != nil {
+		c.HTML(
+			http.StatusNotFound,
+			"404.html",
+			gin.H{},
+		)
+		return
+	}
 
 	c.HTML(
 		http.StatusOK,

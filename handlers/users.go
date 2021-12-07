@@ -50,7 +50,15 @@ func PostAddUser(c *gin.Context) {
 
 func GetEditUser(c *gin.Context) {
 	var user models.User
-	models.DB.First(&user, c.Query("id"))
+	err := models.DB.First(&user, c.Query("id")).Error
+	if err != nil {
+		c.HTML(
+			http.StatusNotFound,
+			"404.html",
+			gin.H{},
+		)
+		return
+	}
 
 	c.HTML(
 		http.StatusOK,

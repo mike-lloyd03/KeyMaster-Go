@@ -11,7 +11,7 @@ var (
 	rows     = [][]string{{"Aaron Sum", "Key1, Key2"}, {"Mike Lloyd", "Key2, Key3"}}
 )
 
-func ShowIndex(c *gin.Context) {
+func GetIndex(c *gin.Context) {
 	c.HTML(
 		http.StatusOK,
 		"index.html",
@@ -19,5 +19,13 @@ func ShowIndex(c *gin.Context) {
 			"Headings": headings,
 			"Rows":     rows,
 		},
+	)
+}
+
+func NotFound(c *gin.Context) {
+	c.HTML(
+		http.StatusNotFound,
+		"404.html",
+		gin.H{},
 	)
 }

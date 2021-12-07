@@ -3,7 +3,8 @@ package main
 import "keymaster_go/handlers"
 
 func initializeRoutes() {
-	router.GET("/", handlers.ShowIndex)
+	router.GET("/", handlers.GetIndex)
+
 	router.GET("/keys", handlers.GetKeys)
 	router.GET("/add_key", handlers.GetAddKey)
 	router.POST("/add_key", handlers.PostAddKey)
@@ -16,6 +17,11 @@ func initializeRoutes() {
 	router.GET("/edit_user", handlers.GetEditUser)
 	router.POST("/edit_user", handlers.PostEditUser)
 
-	router.GET("/assignments", handlers.ShowAssignments)
-	router.GET("/assign_key", handlers.ShowAssignKey)
+	router.GET("/assignments", handlers.GetAssignments)
+	router.GET("/assign_key", handlers.GetAssignKey)
+	router.POST("/assign_key", handlers.PostAssignKey)
+	router.GET("/edit_assignment", handlers.GetEditAssignment)
+	router.POST("/edit_assignment", handlers.PostEditAssignment)
+
+	router.NoRoute(handlers.NotFound)
 }

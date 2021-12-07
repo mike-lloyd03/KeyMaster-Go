@@ -1,0 +1,72 @@
+{{ template "header.html" .}}
+
+<div class="container text-light my-3" style="max-width: 600px">
+  <div class="row justify-content-center">
+    <div class="">
+      <h1>Assign Key</h1>
+
+      <form action="" method="post" class="form" role="form">
+        <input
+          id="csrf_token"
+          name="csrf_token"
+          type="hidden"
+          value="Ijc5YjY1ZTI0YjQwNjU3NjRmNDA1ZDBhMGFiY2Y4MGU3OGVhNjI3ODAi.YaxI9w._fqO46n8ReVYI-mUkZkDacuKRU8"
+        />
+
+        <div class="form-group required">
+          <label class="control-label" for="user">User</label>
+
+          <select class="form-control" id="user" multiple name="user" required>
+            {{range .Users}} {{if .DisplayName}}
+            <option value="{{.Username}}">{{.DisplayName}}</option>
+            {{else}}
+            <option value="{{.Username}}">{{.Username}}</option>
+            {{end}} {{end}}
+          </select>
+        </div>
+
+        <div class="form-group required">
+          <label class="control-label" for="key">Key</label>
+
+          <select class="form-control" id="key" multiple name="key" required>
+            {{range .Keys}}
+            <option value="{{.Name}}">{{.Name}}</option>
+            {{end}}
+          </select>
+        </div>
+
+        <div class="form-group required">
+          <label class="control-label" for="date_out">Date Out</label>
+
+          <input
+            class="form-control"
+            id="date_out"
+            name="date_out"
+            required
+            type="text"
+            value=""
+          />
+        </div>
+
+        <input
+          class="btn btn-primary"
+          id="submit"
+          name="submit"
+          type="submit"
+          value="Assign Key"
+        />
+
+        <input
+          class="btn btn-secondary"
+          formnovalidate
+          id="cancel"
+          name="cancel"
+          type="submit"
+          value="Cancel"
+        />
+      </form>
+    </div>
+  </div>
+</div>
+
+{{ template "footer.html" .}}
